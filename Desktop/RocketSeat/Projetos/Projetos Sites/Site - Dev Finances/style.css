@@ -1,0 +1,302 @@
+/* GLOBAL ------------------------------------------------------------------------------------------------------------------------ */
+
+:root { /* referencia tudo dentro do html */
+    --dark-blue: #1e253d;
+    --green: rgb(34, 155, 34);
+    --green-hover: rgb(48, 172, 48);
+    --red: #e92929;
+}
+
+* { /* Valores abaixo são um padrão para resetar o documento */
+    margin: 0; 
+    padding: 0;
+    box-sizing: border-box; /* Quando usamos border-box, quando definirmos o tamanho da caixa, o tamanho do texto (ou conteudo) não será somado  */
+}
+
+html {
+    font-size: 93.75%; /* 100% = 16px; 93.75% = 15px*/
+}
+
+body {
+    background: #f0f2f5;
+    font-family: 'Poppins', sans-serif;
+}
+
+.sr-only { /* Esse código mantém o texto visível para os leitores de tela, mas some aos olhos do usuário */
+    position: absolute; /* position absolute deixa a caixa à frente do filho */
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border-width: 0;
+}
+
+.container {
+    width: min(90vw, 800px); /* função que define qual dos valores entre os () será utilizado de acordo com o tamanho da janela do navegador */
+    margin: auto; /* O [margin: auto] ajusta o conteúdo no eixo horizontal*/
+}
+
+/* TITLES ------------------------------------------------------------------------------------------------------------------------ */
+
+h2 {
+    margin-top: 3.2rem;
+    margin-bottom: 0.8rem;
+    color: var(--dark-blue);
+
+    font-weight: normal;   
+}
+
+/* LINKS AND BUTTONS ------------------------------------------------------------------------------------------------------------------------ */
+
+a {
+    color: var(--green);
+    text-decoration: none; /* none tira o underline padrão de um link */
+}
+
+a:hover {
+    color: var(--green-hover);
+}
+
+button {
+    width: 100%;
+    height: 50px;
+
+    border: none;
+    color: white;
+    background-color: var(--green);
+
+    padding: 0;
+
+    border-radius: .2rem;
+
+    cursor: pointer; /* comando para o mudar o estilo do cursos quando ele passar sobre o elemento (nesse caso, uma mãozinha) */
+
+}
+
+button:hover {
+    background-color: var(--green-hover);
+}
+
+.button.new {
+    display: inline-block; /* utilizamos esse display para que o margin-bottom seja aplicado e para que a caixa se limite ao tamanho do texto */
+    margin-bottom: .8rem;
+}
+
+.button.cancel {
+    color: var(--red);
+    border: 2px var(--red) solid;
+    border-radius: .2rem;
+    height: 50px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    opacity: 0.7;
+}
+
+.button.cancel:hover {
+    opacity: 1;
+}
+
+.cancel.image {
+    cursor: pointer;
+}
+
+/* HEADER ------------------------------------------------------------------------------------------------------------------------ */
+
+header {
+    background-color: rgb(13, 87, 19);
+    padding: 2rem 0 10rem; /* 1 rem = 16px -> nesse modelo, a box terá espaçamento de 2rem no top, 0 no left e right e 10rem no bottom */
+    text-align: center;
+}
+
+#logo {
+    color: #fff;
+    font-weight: 100; /* define a grossura da fonte */
+}
+
+/* BALANCE ------------------------------------------------------------------------------------------------------------------------ */
+
+#balance {
+    margin-top: -8rem;
+}
+
+#balance h2 {
+    color: white;
+    margin-top: 0;
+}
+
+/* CARDS ------------------------------------------------------------------------------------------------------------------------ */
+
+.card {
+    background-color: azure;
+    padding: 2rem 2rem;
+    border-radius: 5px;
+    margin-bottom: 2rem;
+}
+
+.card h3 {
+    font-weight: normal;
+    font-size: 1rem;
+
+    display: flex; /* por padrão, alguns elementos html deixam os elementos um embaixo do outro; então usamos o display flex para inline */
+    align-items: center; /* alinha os objetos no eixo x (se o display for flex) */
+    justify-content: space-between; /* separa os conteúdos entre eles em tamanhos iguais, respeitando o padding da caixa */
+}
+
+.card p {
+    font-weight: normal;
+    font-size: 1.5rem;
+    line-height: 2rem; /* comando que coloca uma separação de tamanho X entre as linhas do objeto, nesse caso tudo que está no p do card */
+    margin-top: 1rem;
+}
+
+.card.total { /* quando temos mais de uma classe no elemento, separamos elas por pontos aqui no CSS (nome da classe no hmtl "card total" */
+    background-color: var(--green);
+}
+
+/* TRANSACTION ------------------------------------------------------------------------------------------------------------------------ */
+
+#transaction {
+    display: block; /* utilizamos esse display block para trabalhar a tabela quando a página for aberta em um mobile com os comandos a partir do "overflow" */
+    width: 100%; /* comando que pede para pegar todo o espaço disponível que o data-table tem para ser usado */
+
+    overflow-x: auto; /* comando que faz com que o objeto em questão (no caso a tabela #data-table) role para o lado no eixo-x quando mexermos no touchscreen do mobile */
+}
+
+/* TABLE ------------------------------------------------------------------------------------------------------------------------ */
+
+#data-table {
+    width: 100%; /* comando que pede para pegar todo o espaço disponível que o data-table tem para ser usado */
+    border-spacing: 0 0.5rem; /* comando que retira (quando definimos 0 como valor) o espaçamento entre as tables (que vem por padrão no html/css); primeiro valor = vertical e segundo valor = horizontal */
+}
+
+table th {
+    background-color: white;
+    font-weight: normal;
+    color: #090b0f;
+    padding: 1rem 2rem;
+    text-align: left;
+}
+
+table td {
+    background-color: white;
+    padding: 1rem 2rem;
+    font-weight: normal;
+}
+
+tbody tr:hover {
+    opacity: 0.8;
+}
+
+td.description {
+    color: rgb(92, 87, 87);
+}
+
+td.expense {
+    color: rgb(202, 22, 22);
+}
+
+td.income {
+    color: rgb(32, 167, 32);
+}
+
+td.date {
+    color: rgb(92, 87, 87);
+}
+
+/* MODAL ------------------------------------------------------------------------------------------------------------------------ */
+
+.modal-overlay {
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, .7); /* no rgba colocamos o nível de transparência no 4o valor dos () */
+
+    position: fixed; /* com o posicionamento fixed, podemos utilizar os posicionamentos top, left, right and bottom para posicionar o elemento na tela; */
+    top: 0; /* nesse caso, como queremos que ele ocupe a tela inteira e ele estava posicionado embaixo da tela (devido à div dele estar abaixo do main no html), colocamos top 0 para ele subir */
+
+    display: flex; /* Usamos o display flex junto as caracteristicas abaixo para posicionar a box do .modal no centro da tela, já que a .modal é um conteúdo da .modal-overlay */
+    align-items: center;
+    justify-content: center;
+
+    opacity: 0;
+    visibility: hidden; /* usamos essas duas caracteristicas para que essa box fique invisível ao usuário enquanto ele não clicar no link */
+}
+
+.modal-overlay.active {
+    opacity: 1;
+    visibility: visible; /* essas caracteristicas serão aplicadas à box quando o botão (link) for clicado pelo usuário; isso será feito junto ao JavaScript */
+}
+
+.modal {
+    background-color: #f0f2f5;
+    padding: 2.4rem;
+    width: 90%; /* caixa ocupa no máximo 90% da tela ou 500px */
+    max-width: 500px;
+}
+
+/* FORM ------------------------------------------------------------------------------------------------------------------------ */
+
+#form {
+    max-width: 400px;
+}
+
+#form h2 {
+    margin-top: 0;
+}
+
+input {
+    border: none;
+    border-radius: 0.2rem;
+
+    padding: 0.8rem;
+
+    width: 100%;
+}
+
+.input-group {
+    margin-top: .5rem;
+}
+
+.input-group small {
+    opacity: .6;
+}
+
+.input-group.actions {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.input-group.actions .button,
+.input-group.actions button {
+    width: 48%;
+}
+
+/* FOOTER ------------------------------------------------------------------------------------------------------------------------ */
+
+footer {
+    text-align: center;
+    padding: 2rem 4rem;
+    opacity: 0.8;
+}
+
+/* RESPONSIVE ------------------------------------------------------------------------------------------------------------------------ */
+
+/* IMPORTANTE: para simularmos a página em um mobile, abrimos o F12 no chrome e clicamos no ícone de celular/tablet do lado esquerdo do Elements */
+
+@media (min-width: 800px) { /* responsivo que ocorrerá quando width for maior que 800px; ou seja, em um mobile por exemplo, será aplicado o css escrito acima */
+    html {
+        font-size: 87.5%;
+    }
+
+    #balance {
+        display: grid; /* cria um display do tipo linhas e colunas, onde temos que informar com os dados abaixo suas características */
+        grid-template-columns: repeat(3, 1fr); /* Unidade de medida que usamos no grid (fr) -> usei 3*1fr já que são 3 caixas e todas do mesmo tamanho */
+        gap: 2rem; /* usamos o gap para espaçar as colunas */
+    }
+}

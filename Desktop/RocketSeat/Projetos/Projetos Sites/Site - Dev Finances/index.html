@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,400;0,700;1,100;1,400;1,700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="./style.css"> <!-- É assim que acessamos um arquivo .css -->
+    
+    <title>Dev Finances</title>
+
+</head>
+
+<body>
+
+    <header>
+        
+        <img src="./assets/logo.svg" alt="Logo Dev Finance"> <!-- .svg são arquivos de imagem que se adaptam melhor aos navegadores; no alt="" escrevemos que mensagem aparecerá se a imagem não carregar  -->
+
+    </header>
+
+    <main class="container">
+
+        <section id="balance"> <!-- O primeiro filho direto da primeira section geralmente é uma h2  -->
+             
+            <h2 class="sr-only">Balanço</h2>
+
+                <div class="card">
+                    <h3>
+                        <span>Entradas</span> <!-- caixa que serve para deixar os elementos em linha -->
+                        <img src="./assets/income.svg" alt="Logo de Entrada">
+                    </h3>
+                    <p id="incomeDisplay"></p>
+                </div>
+
+                <div class="card">
+                    <h3>
+                        <span>Saídas</span> 
+                        <img src="./assets/expense.svg" alt="Logo de Saída">
+                    </h3>
+                    <p id="expenseDisplay"></p>
+                </div>
+
+                <div class="card total">
+                    <h3>
+                        <span>Saldo</span> 
+                        <img src="./assets/total.svg" alt="Logo de Saldo">
+                    </h3>
+                    <p id="totalDisplay"></p>
+                </div>
+                      
+        </section>
+
+        <section id="transaction">
+
+            <h2 class="sr-only">Transações</h2> <!-- h1 é o header principal, o texto é maior e ele está em negrito; quando vamos diminuindo para o h2, h3, ... os textos diminuem -->
+
+            <a href="#" 
+               onclick="Modal.open()" 
+               class="button new">+ Nova Transação</a> <!-- # no href serve para não sair da página quando clicarmos no link(botão); onclick ativa a função JS ao clicar com o mouse -->
+
+            <table id="data-table">
+    
+                <thead>
+                    <tr> <!-- table row = tudo que vier dentro do tr estará inline -->
+                        <th>Descrição</th> <!-- table head = conteúdo dentro de uma caixa com um texto mais forte (em negrito) -->
+                        <th>Valor</th>
+                        <th>Data</th>
+                        <th></th>
+                    </tr>
+                </thead>
+    
+                <tbody>
+                </tbody>
+    
+            </table>
+
+        </section>
+       
+    </main>
+
+    <footer>
+        2022 - dev.finance$
+    </footer>
+
+    <!-- Estrutura abaixo é de um modal overlay é uma janela que abre quando clicamos em algum link na página -->
+
+    <div class="modal-overlay"> <!-- Essa primeira div é da caixa transparente que fica ao fundo -->
+        <div class="modal"> <!-- Essa segunda div é da caixa branca que aparece ao clicarmos no link -->
+            <div id="form">
+                <h2>Nova Transação</h2>
+                <form action="" onsubmit="Form.submit(event)"> <!-- onsubmit serve para ativar o salvamento dos dados -->
+                    <div class="input-group">
+                        <label 
+                            class="sr-only"  
+                            for="description">Descrição</label> <!-- no label linkamos o input com o label através de um id no campo "for" -->
+                        <input 
+                            type="text" 
+                            id="description" 
+                            name="description" 
+                            placeholder="Descrição">
+                    </div>
+                    <div class="input-group">
+                        <label 
+                            class="sr-only"  
+                            for="amount">Valor</label>
+                        <input 
+                            type="number"
+                            step="0.01" 
+                            id="amount" 
+                            name="amount" 
+                            placeholder="0,00"> <!-- o step serve para defirnirmos de quanto em quanto o valor irá mudar nas setinhas -->
+                            <small class="help"> Use o sinal negativo (-) para despesas e vírgula (,) para casas decimais </small> <!-- usamos small para entradas de texto com fontes pequenas -->
+                    </div>
+                    <div class="input-group">
+                        <label 
+                            class="sr-only"  
+                            for="date">Data</label>
+                        <input 
+                            type="date" 
+                            id="date" 
+                            name="date" 
+                            placeholder="01/01/2022">
+                    </div>
+
+                    <div class="input-group actions">
+                        <a href="#" 
+                        onclick="Modal.close()" 
+                        class="button cancel">Cancelar</a>
+                        <button>Salvar</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script src="./script.js"></script> <!-- IMPORTANTE: adicionamos o arquivo .js ao final do body para garantir que não ocorra erros de sincronização com o html -->
+
+</body>
+
+</html>
