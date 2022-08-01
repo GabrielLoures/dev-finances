@@ -191,9 +191,9 @@ const Utils = { // função para transformar a string do amount colocada pelo us
     },
 
     formatAmount(value) {
-        value = Number(value) * 100; // multiplicamos por 100 para que, quando os dados entrarem no formatCurrency, ele divida por 100 novamente e coloque a vírgula
+        value = value * 100; // multiplicamos por 100 para que, quando os dados entrarem no formatCurrency, ele divida por 100 novamente e coloque a vírgula
         
-        return value;
+        return Math.round(value);
     },
 
     formatCurrency(value) {
